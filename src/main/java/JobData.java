@@ -79,11 +79,14 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            //original:   if (aValue.contains(value)) {
+            //              jobs.add(row);
+
+            //changed to this to check for case insensitive
+            if (aValue.toLowerCase().contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
-
         return jobs;
     }
 
@@ -99,7 +102,20 @@ public class JobData {
         loadData();
 
         // TODO - implement this method
-        return null;
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+//searches through all columns for the value/search term entered by user
+        for (HashMap<String, String> row : allJobs) {
+            for (String cell : row.values()) {
+                //checks for case insensitive:
+                if (cell.toLowerCase().contains(value.toLowerCase())){
+                    jobs.add(row);
+                    //stops the cycle so no duplicates:
+                    break;
+                }
+            }
+        }
+        //return null - changing this to return jobs which removed null error in test feedback;
+        return jobs;
     }
 
     /**
@@ -142,5 +158,5 @@ public class JobData {
             e.printStackTrace();
         }
     }
-
 }
+
