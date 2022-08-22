@@ -82,7 +82,7 @@ public class JobData {
             //original:   if (aValue.contains(value)) {
             //              jobs.add(row);
 
-            //changed to this to check for case insensitive
+            //added case check to aValue and value to check for case insensitive in data and search value:
             if (aValue.toLowerCase().contains(value.toLowerCase())) {
                 jobs.add(row);
             }
@@ -97,7 +97,6 @@ public class JobData {
      * @return      List of all jobs with at least one field containing the value
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
-
         // load data, if not already loaded
         loadData();
 
@@ -106,7 +105,7 @@ public class JobData {
 //searches through all columns for the value/search term entered by user
         for (HashMap<String, String> row : allJobs) {
             for (String cell : row.values()) {
-                //checks for case insensitive:
+                //checks for case insensitive in data and search value:
                 if (cell.toLowerCase().contains(value.toLowerCase())){
                     jobs.add(row);
                     //stops the cycle so no duplicates:
@@ -114,7 +113,7 @@ public class JobData {
                 }
             }
         }
-        //return null - changing this to return jobs which removed null error in test feedback;
+        //changed this to return jobs instead of null which removed null error in test feedback;
         return jobs;
     }
 

@@ -128,23 +128,18 @@ public class TechJobs {
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
         //Iterate over an ArrayList of jobs. Each job is itself a HashMap.
-        // Create a nested loop to loop over each HashMap (do not call each key-value.
         //if the size of the ArrayList of jobs is 0, print No Results:
         if (someJobs.size() == 0) {
             System.out.print("No Results");
-            //return;
         } else {
+            // Create a nested loop to loop over each HashMap,
             //for each job in the jobs, pull the details and print each job listing:
             for (HashMap<String, String> job : someJobs) {
                 System.out.print("\n*****\n");
-                //String jobInfo = "\n*****\n";
                 for (Map.Entry<String, String> detailsOfJob : job.entrySet()) {
-                    //System.out.println(detailsOfJob.getKey() + ": " + detailsOfJob.getValue());
                     System.out.print(detailsOfJob.getKey() + ": " + detailsOfJob.getValue() + "\n");
                 }
                 System.out.println("*****");
-                //jobInfo += "*****";
-                //System.out.print(jobInfo);
             }
         }
     }
