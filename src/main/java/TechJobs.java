@@ -3,6 +3,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+
+
 /**
  * Created by LaunchCode
  */
@@ -10,7 +12,7 @@ public class TechJobs {
 
     static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -105,6 +107,7 @@ public class TechJobs {
                 }
             }
 
+
             // Validate user's input
             if (choiceIdx < 0 || choiceIdx >= choiceKeys.length) {
                 System.out.println("Invalid choice. Try again.");
@@ -112,7 +115,7 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
@@ -120,6 +123,21 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+        //Iterate over an ArrayList of jobs. Each job is itself a HashMap.
+        //if the size of the ArrayList of jobs is 0, print No Results:
+        if (someJobs.size() == 0) {
+            System.out.print("No Results");
+        } else {
+            // Create a nested loop to loop over each HashMap,
+            //for each job in the jobs, pull the details and print each job listing:
+            for (HashMap<String, String> job : someJobs) {
+                System.out.print("\n*****\n");
+                for (Map.Entry<String, String> detailsOfJob : job.entrySet()) {
+                    System.out.print(detailsOfJob.getKey() + ": " + detailsOfJob.getValue() + "\n");
+                }
+                System.out.println("*****");
+            }
+        }
     }
 }
+
