@@ -107,10 +107,6 @@ public class TechJobs {
                 }
             }
 
-            //call findByValue()??;
-//            JobData.findByValue();
-//            public static void findByValue() {
-//            }
 
             // Validate user's input
             if (choiceIdx < 0 || choiceIdx >= choiceKeys.length) {
